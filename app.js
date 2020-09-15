@@ -95,7 +95,7 @@ const renderBoard = () => {
     boardDOM.appendChild(row);
   }
 };
-
+// just a function update board which just draws a blank board and piece on top of it
 // function which adds the shape onto the board
 const drawShape = () => {
   // iterate over shape's coordinates
@@ -103,19 +103,20 @@ const drawShape = () => {
     // place shape at r,c position on the board
     let r = currentShape.shape[i][0] + currentShape.offset[0];
     let c = currentShape.shape[i][1] + currentShape.offset[1];
-    BOARD[r][c].color = "red";
+    //BOARD[r][c].color = "red";
     let target = document.querySelector(`#row${r}col${c}`);
     target.style.backgroundColor = "red";
   }
 };
-// clear previous shape from the board
+
+// clear the shape from the board
 const clearShape = () => {
   // iterate over shape's coordinates
   for (let i = 0; i < currentShape.shape.length; i++) {
-    // place shape at r,c position on the board
+    // clear shape at r,c position on the board
     let r = currentShape.shape[i][0] + currentShape.offset[0];
     let c = currentShape.shape[i][1] + currentShape.offset[1];
-    BOARD[r][c].color = "grey";
+    // BOARD[r][c].color = "grey";
     let target = document.querySelector(`#row${r}col${c}`);
     target.style.backgroundColor = "grey";
   }
@@ -123,8 +124,6 @@ const clearShape = () => {
 
 
 const movePiece = (direction) => {
-  // if not going to hit the wall
-
     clearShape();
     if (direction === "right") {
       currentShape.offset[1] += 1;
@@ -132,7 +131,7 @@ const movePiece = (direction) => {
       currentShape.offset[1] -= 1;
     }
     drawShape();
-  
+
 };
 
 // return true if a collision will occur. Need to check: left right walls
